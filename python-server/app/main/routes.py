@@ -2,8 +2,6 @@
 from flask import Flask, request, jsonify # type: ignore
 import requests
 from flask import Flask, render_template, jsonify
-from flask_login import LoginManager, login_required, current_user
-from models import db, User, Product
 from app.main import bp
 from flask import render_template # type: ignore
 import asyncio
@@ -36,18 +34,4 @@ def scrape_ingredients():
     return jsonify(product_data)
 
 
-login_manager.login_view = 'login'
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
 
-@bp.route('/')
-@login_required
-def dashboard():
-    return render_template('dashboard.html')
-
-@bp.route('/get-products')
-@login_required
-def get_products():
-    user_products = Product.query.filter_by(user_id=current_user.id).all()
-    return render_template('product_table.html', products=user_products)
