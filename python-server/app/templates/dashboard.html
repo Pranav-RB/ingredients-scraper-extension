@@ -1,0 +1,28 @@
+<!-- templates/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Scraper Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Skin Scraper Dashboard</h1>
+        </header>
+
+        <div class="dashboard-content">
+            <h2>Your Skincare Products</h2>
+            <div id="product-table" hx-get="{{ url_for('get_products') }}" hx-trigger="load, every 30s">
+                <!-- Table will be loaded here -->
+                {% block table %}
+
+                {% endblock table %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

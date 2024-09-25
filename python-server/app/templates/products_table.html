@@ -1,0 +1,29 @@
+<!-- templates/product_table.html -->
+{% block table %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Ingredients</th>
+            <th>Skin Type</th>
+            <th>Skin Conditions</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td><img src="{{ product.image_url }}" alt="{{ product.name }}"></td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.ingredients }}</td>
+            <td>{{ product.skin_type }}</td>
+            <td>{{ product.skin_conditions }}</td>
+            <td>{{ product.rating }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock table %}

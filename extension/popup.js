@@ -6,7 +6,7 @@ function openFlaskWithUrl() {
         const currentTabUrl = tabs[0].url;
 
         // Flask app URL with the current tab's URL passed as a query parameter
-        const flaskAppUrl = 'http://127.0.0.1:5000/?url=' + encodeURIComponent(currentTabUrl);
+        const flaskAppUrl = 'http://127.0.0.1:5000/get_link/?url=' + encodeURIComponent(currentTabUrl);
 
         // Open a new tab with the Flask app, passing the current tab URL as a parameter
         chrome.tabs.create({ url: flaskAppUrl });
@@ -15,7 +15,7 @@ function openFlaskWithUrl() {
 
 // Function to open the landing page
 function goToHomePage() {
-    chrome.tabs.create({ url: chrome.runtime.getURL('landing.html') });
+    chrome.tabs.create({ url: 'http://127.0.0.1:5000/' });
 }
 
 // Add event listeners for both buttons
